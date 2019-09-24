@@ -27,7 +27,7 @@ export class SamplePage {
       { text: "Functional Decline" },
       { text: "Enteral & Total parenteral nutrition (TPN)" },
       { text: "Head & Neck Cancer" },
-      { text: "Hospice Nurse" },
+      { text: "Home Health Nurse" },
       { text: "Human Immunodeficiency Virus/Acquired Immune Deficiency Syndrome (HIV/AIDS)" },
       { text: "Imminent Death" },
       { text: "Infection Control and Prevention" },

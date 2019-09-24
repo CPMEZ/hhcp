@@ -45,7 +45,7 @@ export class SubselectPage {
     alert('mockInitStore');
     this.products = [
       {
-        title: 'cp3submonthly',
+        title: 'hhcpsubmonthly',
         price: 5.99
       }
     ]
@@ -62,7 +62,7 @@ export class SubselectPage {
     // TODO:  check validateReceipt to see if they've ever
     //      subscribed before, to decide whether to present introductory
     try {
-      this.products = await this.iap.getProducts(['CP3SubMonthly', 'cp3submonthly']);
+      this.products = await this.iap.getProducts(['HHCPSubMonthly', 'hhcpsubmonthly']);
       // alert('PRODUCTS' + JSON.stringify(this.products));
     }
     catch (err) {
