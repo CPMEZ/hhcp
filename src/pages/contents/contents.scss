@@ -1,0 +1,65 @@
+page-contents {
+    button{
+        color: color($colors, light);
+        background-color: color($colors, primary);
+        font-size: 1.4rem;
+        margin-left: 2.2rem;
+    }
+    p {
+        word-break: break-word;
+        white-space: normal;
+    }
+    .verticalLine {
+        margin-left: 0px !important; 
+        margin-right: 15px !important;
+        border-right: solid;
+        border-color: rgb(238, 238, 238);
+    }
+    .toolbar {
+        min-height: 30px;
+    }    
+    .problem {
+        color: color($colors, primary);
+    }
+    .goal {
+        color: green;
+    }
+    .goalShort {
+        color: rgb(0, 177, 0);
+    }
+    .intervention {
+        color: blue;
+    }
+    .discipline {
+        color: blue;
+        font-size: smaller;
+    }
+    .divHeader {
+        font-size: large;
+    }
+    .expandTool {
+        font-size: 2rem;
+        margin-right: 0.6rem;
+        color: black;
+        background-color: white;
+    }
+    .tool {
+        font-size: 1.6rem;
+        margin-left: 0.6rem;
+        color: grey;
+        background-color: white;
+    }
+    .trash {
+        font-size: 1.6rem;
+        margin-left: 0.8rem;
+        margin-right: 1rem;
+        color: grey;
+        background-color: white;
+        padding: 0; 
+    }
+    .helptext {
+        font-size: 0.8rem;
+        color: color($colors, primary);
+    }
+
+}

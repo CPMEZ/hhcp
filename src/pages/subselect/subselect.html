@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar class="navbarStyle" color="primary">
+    <ion-title>Subscribe</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="auth.userLoggedIn && auth.subState=='current'">
+    <ion-item no-lines>
+      <h1>You're already subscribed, logged in, and ready to go.</h1>
+    </ion-item>
+  </div>
+  <ion-item no-lines *ngIf="auth.subState=='expired'">
+    <h1>Your subscription has expired. Choose 'Renew' to re-subscribe with your existing user ID.</h1>
+  </ion-item>
+  <ion-item no-lines *ngIf="(!auth.userLoggedIn) && (auth.subState!='current') && (auth.subState!='expired')">
+    <h1>Subscribe to use Red Book Care Plan content.</h1>
+  </ion-item>
+  <ion-item no-lines *ngIf="!auth.userLoggedIn">
+    <div ion-item no-lines *ngFor="let p of products" class="hilite">
+      <div>{{p.title}} {{p.price}}
+        <button ion-button *ngIf="(!auth.userLoggedIn) && (auth.subState!='current') && (auth.subState!='expired')" (click)="subscribe(p, 'subscribe')">Purchase</button>
+        <button ion-button *ngIf="auth.subState=='expired'" (click)="subscribe(p, 'renew')">Renew</button>
+      </div>
+    </div>
+  </ion-item>
+  <div *ngIf="!auth.userLoggedIn">
+    <ion-item no-lines>
+      <h3 class="hilite">Subscribing is a <em>two-step</em> process:</h3>
+    </ion-item>
+    <ion-item no-lines>
+      <div>
+        <span class="hilite">1)</span> After tapping <span class="hilite">Purchase</span> you will confirm with the
+        Store.
+      </div>
+    </ion-item>
+    <ion-item no-lines>
+      <div><span class="hilite">2)</span> Then, after a successful purchase, you'll <span class="hilite">set up your
+          subscriber information</span> with the Red Book.</div>
+      <!-- <div><span class="hilite">2)</span> Then, after a successful purchase, you'll <span class="hilite">set up your
+          subscriber information</span> with the Red Book, including a unique user ID, a password, and your personal encryption key for securing
+          your plans in the cloud.</div> -->
+    </ion-item>
+  </div>
+  <br>
+  <ion-item no-lines>
+    <div>
+      Subscribing gives you access to content to use in your own care
+      planning.</div>
+    <ul>
+      <li>High Quality</li>
+      <li>Evidence-based</li>
+      <li>Practice Validated</li>
+    </ul>
+    <div>
+      Includes
+    </div>
+    <ul>
+      <li><em>Complete Model Care Plans</em> for you to adapt</li>
+      <li>Care Topics</li>
+      <li>Outcomes</li>
+      <li>Interventions</li>
+      <li>All Disciplines</li>
+    </ul>
+    <div>
+      Content provided with the subscription comes from the
+      "Handbook of Home Health Standards, 6th Edition" written by Tina M. Marrelli, the "Red Book."</div>
+    <br>
+    <div>The content is offered as a subscription service.
+      <ul>
+        <li>The subscription option is called "Hospice Monthly"</li>
+        <!-- <li>The purpose of the subscription is to provide access to professional care plan content.</li> -->
+        <li>The price for monthly subscription is $5.99 US per month.</li>
+        <li>When you confirm your purchase, payment will be charged to your iTunes Account.</li>
+        <li>The subscription renews automatically for the selected term (monthly), unless you cancel it.</li>
+        <li>You cancel by turning off auto-renew in your iTunes "Manage Your Subscriptions." (In Settings->iTunes & App
+          Store.)</li>
+        <li>You'll have to cancel at least 24 hours before the end of the current period.</li>
+        <li>Payment for each period's automatic renewal is also charged to your iTunes Account.</li>
+        <li>The price of renewal each period is the same as the initial period. That is, $5.99 when you subscribed
+          monthly.</li>
+        <li>If at any time a free trial period is offered, any unused portion of the free trial period is forfeited
+          if/when you purchase a subscription.</li>
+      </ul>
+      <p>You may see the end-user license agreement <span style="color: red" (click)="seeTerms()">here</span> within the
+        application, or <a href="https://marrelli.com/cpeula/apple">here</a> on the web.</p>
+      <p>You may see our privacy policy <a href="https://marrelli.com/privacy-policy/">here</a> on the web.</p>
+    </div>
+  </ion-item>
+  <br>
+
+</ion-content>

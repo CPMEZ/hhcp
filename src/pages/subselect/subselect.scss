@@ -1,0 +1,25 @@
+page-subselect {
+    h1 {
+        color: color($colors, primary);
+        word-break: normal;
+        white-space: normal;
+    }
+    div {
+        word-break: normal;
+        white-space: normal;
+    }
+    li {
+        font-size: small;
+        word-break: normal;
+        white-space: normal;
+    }
+    p {
+        font-size: smaller;
+        word-break: normal;
+        white-space: normal;
+    }
+    .hilite {
+        font-size: medium;
+        color: color($colors, primary);
+    }
+}

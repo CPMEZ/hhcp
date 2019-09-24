@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar class="navbarStyle" color="primary">
+    <ion-title><em>welcome to</em></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="welcome">
+
+  <div text-center>
+    <h2><em>Tina Marrelli's</em></h2>
+    <img src="assets/imgs/TMFun600.png" class="logo" />
+    <h1>Red Book Hospice Care Planning</h1>
+    <h5>Copyright ©2019 Marrelli and Associates, Inc.</h5>
+  </div>
+  <br>
+  <div text-center>
+    <h2 *ngIf="conn.internet && auth.userLoggedIn">Welcome Back! You're logged in as {{auth.user}}.</h2>
+  </div>
+  <div text-center>
+    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="workOnline()">
+      CONTINUE
+    </button>
+    <button ion-button *ngIf="conn.internet && !auth.userLoggedIn" (click)="login()">
+      LOG IN
+    </button>
+    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="logout()">
+      LOG OUT
+    </button>
+    <h3 *ngIf="!conn.internet">No internet connection? Could not connect to Red Book cloud.</h3>
+    <button ion-button (click)="workOffline()">
+      WORK OFFLINE
+    </button>
+    <h2 class="underline" (click)="subscribe()">Not a subscriber? Subscribe now</h2>
+    <h2>
+      <a style="color: white;" href="#"
+      onclick="window.open('https://marrelli.com/app-support/video/', '_blank', 'location=no'); return false;">Watch a
+      HOW-TO Video</a>
+    </h2>
+    <h2 class="underline" (click)="previewStd()">Preview Red Book Standard Plans</h2>
+    <br>
+    <h4 (click)="showTerms()">Using the app indicates you accept the <span class="underline">License Agreement.</span>
+    </h4>
+  </div>
+  <p style="color: white; font-size: xx-small; text-align: center">v1.2.2.0</p>
+</ion-content>

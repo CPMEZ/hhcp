@@ -1,0 +1,149 @@
+_ add a way to message customers, and have them reply
+
+
+
+x add ?+ to discipline
+x change >>+ to conditions only
+
+x add name of selected thing to title bar, "select xxxxx"
+
+x add the standard care plan button on the add plan page
+
+X preview the condition or discipline contents before adding
+	show the library (text)
+	
+x keep the library local, avoid reading from server
+
+x disallow same care plan name
+
+x add to help text, add all your co morbid conditions all at once, and then refine after (cause the system takes care of all the unduplication)
+x add expansion-when-merged description to help text
+
+x make help printable
+
+x another my care plans banner--just added explanatory text
+x add name of plan to select list eg add xxxx for planX
+x		no, put in text below banner, above search
+
+0 change color of loading spinner on splashscreen--don't seem to be able to
+
+x colorize lookup lists
+
+_ add timestamp to pdf heading in splashscreen
+
+_ build some kind of undo?
+
+x all disciplines default to nursing in conditions
+
+_ fix save on pause:  try ionViewCanLeave, with async resolve before return true?
+	i think the request is going out of scope/being killed and aborting because of it
+see this "background mode" example:  =============================================
+	import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { NativeAudio } from '@ionic-native/native-audio';
+
+export class HomePage {
+
+  constructor(public navCtrl: NavController,public nativeAudio: NativeAudio , public backgroundMode : BackgroundMode) {
+
+  }
+}  
+Next you need to preload the mp3 to be played before playing it:
+
+this.nativeAudio.preloadSimple('audio1', 'audio/1.mp3').then((msg)=>{
+  console.log("message: " + msg);
+}, (error)=>{
+  console.log("error: " + error);
+});
+Then you can add the method to play the audio
+
+  public playAudio(){
+    this.backgroundMode.enable();
+    this.backgroundMode.on("activate").subscribe(()=>{
+      this.nativeAudio.play("audio1");  
+    });
+    this.nativeAudio.play("audio1"),() => console.log('audio1 is done playing'));
+  }
+===end of example==========================================================================================
+
+x change splash screen color for contrast
+x  replace splash screen with tina's picture
+
+x  re-use their content, including merge in old plans
+x when reusing your own content, be able to merge in condition plans i've previously created, ie merge from any of mine
+
+x put disclaimer on login page, "by your login you accept..." + t&c button
+
+0 procedural assist..guide thru developing a plan
+		copy template
+		merge other templates
+		edit to remove, occasionally add content
+		fill in the blanks
+x guided outline starter plan
+
+_ import someone else's plans?
+
+x if reading plans returns 304, have to use local copy
+	(what's it doing now, btw?)
+	[made api never return 304 via expires and cache: no-cache]
+
+x verify unduplicated plan name in edit-plan
+
+x test dragula in care plans page, for modeling large lists
+	working for now; doesn't save drag
+x make it save drag
+	0 put wait cursors in loading plans cause once they get big
+	0 have to use ngmodel on screen list or similar, because async read finishes after page loads,
+		so can't use static plans list
+	0 or load in either welcome or log in? 
+
+0 investigate large pdf generation
+	x fixed bug w missing goals--could be it, test on device
+
+x immediate write after login?  w newly installed app
+
+x remove delete confirmation from outcome and intervention
+
+x change local storage key to user-specific for plan data
+
+X bad password message
+
+x write when device re-activated from sleep--fix that
+
+x update EULA
+	x insert click thru
+	x update terms page
+	x update URL w apple store connect
+
+maybe later:  cut and paste to rearrange
+maybe later:  drag and drop scroll beyond limits --try ionic reorder
+	or, drag handle on items
+
+x malformed UTF-8 error is caused by using the user's personal encryption key, so when you change users, fails
+	needs to have user-specific storage for PPP & masters' cache
+
+x check user id exists before creating new
+	(using cpapi)
+
+_ refactor PPP.plans[] change .name to .text, .text to .description
+	_ have to change all masters and data
+
+0 return to welcome page after logout
+
+0 change icons
+0 add legend
+x add popup menus
+
+0 generate a template/skeleton plan into PPP.plans for new users
+	0 reinstate if goes missing?
+x guided starter plan
+
+
+v 0.0.9 for distribution
+
+
+x renew subscription
+
+change password
+

@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar class="navbarStyle" color="primary">
+    <ion-title>Log In to Red Book</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="help()">
+        <ion-icon name="help"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label stacked>User ID</ion-label>
+    <ion-input [(ngModel)]="userId"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="pwd"></ion-input>
+  </ion-item>
+  <ion-item no-lines *ngIf="!conn.internet">
+    <div>No internet connection? Could not connect to Red Book cloud.</div>
+  </ion-item>
+  <ion-item no-lines *ngIf="conn.internet">
+    <button ion-button [disabled]="!(pwd && userId)" (click)="login()">LOG IN</button><br>
+    <div>Log in to your Red Book account.</div>
+  </ion-item>
+  <br><br>
+  <div>Don't have a Red Book id yet?</div>
+  <ion-item no-lines *ngIf="conn.internet && !auth.userLoggedIn">
+    <button ion-button (click)="subscribe()">SUBSCRIBE</button><br>
+    <div>Subscribe to use the Red Book content in your care plans.</div>
+  </ion-item>
+  <ion-item>
+    <br><br>
+    <button ion-button (click)="workOffline()">WORK OFFLINE</button>
+    <br>
+    <div>Work Offline to work on plans on your device only, without saving to the cloud. If you have a subscription,
+      your changes will be synced to the cloud when you log in again.</div>
+  </ion-item>
+  <br>
+  <ion-item>
+    <div>
+    <p>This Application is protected by copyright and you may use this Application only as provided in the complete
+      <span (click)="showTerms()" style="text-decoration: underline">End User License Agreement (EULA)</span>. </p>
+    <p>Application is intended for use ONLY by professional and qualified health care or wellness providers duly
+      licensed in accordance with their jurisdictional requirements (Qualified Healthcare Professionals) and by accessing this
+      Application you warrant that you are a Qualified Healthcare Professional. </p>
+    <p>Users are solely and exclusively responsible for compliance with all applicable laws and are expressly
+      prohibited from accessing, transmitting, saving, or otherwise using the Application in violation of any applicable
+      healthcare or patient privacy laws, rules or regulations.</p>
+    <p>By purchasing or using this Application, you warrant that you are a Qualified Healthcare Professional and that
+      you have read and agreed to the EULA.</p>
+</div>
+  </ion-item>
+</ion-content>

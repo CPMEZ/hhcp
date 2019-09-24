@@ -1,0 +1,14 @@
+{
+  "name": "HospiceCP",
+  "short_name": "cp3",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/TM-150px.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "play_store_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiEFqepQ2YWskTojqSz8TGwp24HcZdezOzNPtH5nLrYPqJOTNgNUDOz6keArhvB1XgT5qpgf9I7Z7lIunBEmnHbu1b8lTqkXJjFj4OA1EmEe9aS61MKj3iZjnz6sjCMDvDur31yK/ia1L49oWSNcdjhmo3p00W//UF5jy6bSSmn2ZcNoCEDcRpN5F68qTNGwFrgtVqWvG9jpIIRWdRNZlPa4/RF1QgQ78Zv2xTgvVN5a+yI9veNLkXi2tkyF6TFmQt3v+9lGZ3HI61PuVBu2IU/QqMM4ARPAWQjYqkBBEj+3jK8HWQJ7RxJj3lnokpslp+DShd4cjDe6Vjo/wcUl2wwIDAQAB",
+  "background_color": "#4e8ef7",
+  "theme_color": "#4e8ef7"
+}
