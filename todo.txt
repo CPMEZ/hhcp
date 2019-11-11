@@ -1,5 +1,12 @@
 _ add a way to message customers, and have them reply
+_ share plans between subscribers
+_ recognize expiration in cached user creds
+_ check new user.json & data.json are created writable on server
 
+
+x create interventions list
+x create goals list
+x create problems list
 
 
 x add ?+ to discipline
@@ -124,7 +131,7 @@ x malformed UTF-8 error is caused by using the user's personal encryption key, s
 	needs to have user-specific storage for PPP & masters' cache
 
 x check user id exists before creating new
-	(using cpapi)
+	(using hhapi)
 
 _ refactor PPP.plans[] change .name to .text, .text to .description
 	_ have to change all masters and data

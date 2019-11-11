@@ -19,7 +19,7 @@ import { MyApp } from './app.component';
 
 import { MasterPlansProvider } from '../providers/master-plans/master-plans';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
-import { CPAPI } from '../providers/cpapi/cpapi';
+import { HHAPI } from '../providers/hhapi/hhapi';
 import { PersonalPlansProvider } from '../providers/personal-plans/personal-plans';
 import { LocalStoreProvider } from '../providers/local-store/local-store';
 import { CacheProvider } from '../providers/cache/cache';
@@ -119,7 +119,7 @@ import { SampleDetailPage } from '../pages/sample-detail/sample-detail';
   ],
   providers: [
     AuthenticationProvider,
-    CPAPI,
+    HHAPI,
     LocalStoreProvider,
     MasterPlansProvider,
     PersonalPlansProvider,

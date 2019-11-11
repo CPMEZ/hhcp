@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { Network } from '@ionic-native/network';
-import { CPAPI } from '../cpapi/cpapi';
+import { HHAPI } from '../hhapi/hhapi';
 
 @Injectable()
 export class ConnectionProvider {
@@ -15,7 +15,7 @@ export class ConnectionProvider {
 
   constructor(public http: HttpClient,
   // private network: Network,
-  private cpapi: CPAPI) {
+  private hhapi: HHAPI) {
     console.log('Constructor ConnectionProvider Provider');
     // periodically check network connection?
     // 30 seconds
@@ -27,7 +27,7 @@ export class ConnectionProvider {
   checkConnection() {
     // now see if there's api access
     console.log('checkConnection');
-    var route: string = this.cpapi.apiURL + "master/";
+    var route: string = this.hhapi.apiURL + "master/";
     this.http.options(route)
       .subscribe((data) => {
         console.log('internet on');
@@ -51,7 +51,7 @@ export class ConnectionProvider {
   //       this.connected= true;
   //         console.log(this.network.type + ' connected');
   //         // now see if there's internet access
-  //       var route: string = this.cpapi.apiURL + "master/";
+  //       var route: string = this.hhapi.apiURL + "master/";
   //       console.log('calling http options');
   //       this.http.options(route)
   //         .subscribe((data) => { 

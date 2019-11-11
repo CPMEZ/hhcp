@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { LocalStoreProvider } from '../local-store/local-store';
-import { CPAPI } from '../cpapi/cpapi';
+import { HHAPI } from '../hhapi/hhapi';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import CryptoJS from 'crypto-js';
@@ -35,7 +35,7 @@ export class AuthenticationProvider {
 
     encryptKey: string;
 
-    constructor(private cpapi: CPAPI,
+    constructor(private hhapi: HHAPI,
         private http: HttpClient,
         private iap: InAppPurchase,
         private plt: Platform,
@@ -68,10 +68,10 @@ export class AuthenticationProvider {
 
     async getUserData(user: string, pwd: string): Promise<boolean> {
         console.log('getUserData');
-        var path = this.cpapi.apiURL + "user/" + user + "?p=" + pwd;
+        var path = this.hhapi.apiURL + "user/" + user + "?p=" + pwd;
         if ((!user) || (!pwd)) { return false; }
         try {
-            let data = await this.cpapi.getData(path);
+            let data = await this.hhapi.getData(path);
             if (!!data) {
                 const d = JSON.parse(data);
                 console.log(d);
@@ -346,7 +346,7 @@ export class AuthenticationProvider {
     createSubscription(productId: string): Promise<boolean> {
         // alert('createSubscription ' + productId);
         return new Promise((resolve, reject) => {
-            // set up a new user on cpapi
+            // set up a new user on hhapi
             // console.log("createSubscription");
             // TODO: encrypt user data
             var baseDate = new Date(Date.now());
@@ -362,7 +362,7 @@ export class AuthenticationProvider {
                 subType: productId
             };
             // remove the userLoggedIn flag? 
-            var api: string = this.cpapi.apiURL + "user/" + this.user.trim();
+            var api: string = this.hhapi.apiURL + "user/" + this.user.trim();
             let httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
             let postOptions = { headers: httpHeaders }
             console.log('before new user post', userData);
@@ -390,7 +390,7 @@ export class AuthenticationProvider {
             //      apple has different date than i have, means
             //      user renewed w apple, or user got refunded by apple
             if (n.valueOf() !== d.valueOf()) {
-                // update user on cpapi with renewed subscription date
+                // update user on hhapi with renewed subscription date
                 const userData = {
                     user: this.user.trim(),
                     password: this.password,
@@ -398,7 +398,7 @@ export class AuthenticationProvider {
                     renewal: expDate,
                     subType: this.subType
                 };
-                var api: string = this.cpapi.apiURL + "user/" + this.user.trim();
+                var api: string = this.hhapi.apiURL + "user/" + this.user.trim();
                 // this.conn.checkConnection();
                 let httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
                 let postOptions = { headers: httpHeaders }
@@ -421,9 +421,9 @@ export class AuthenticationProvider {
 
     checkUser(user: string): Promise<boolean> {
         return new Promise((resolve) => {
-            // see if user already used, or is available, on cpapi
+            // see if user already used, or is available, on hhapi
             // TODO: could be user is present but expired, allow to be used?  no
-            var api: string = this.cpapi.apiURL + "user/" + user;
+            var api: string = this.hhapi.apiURL + "user/" + user;
             this.http.head(api)
                 .subscribe(data => { resolve(false); },
                     error => { resolve(true); });

@@ -81,7 +81,7 @@ export class CacheProvider {
   }
 
   filterData(data, type, filter) {
-    // (matches code in cpapi)
+    // (matches code in hhapi)
     const f = filter.toLowerCase()
     console.log('filter', f)
     const t = JSON.parse(data)  // "r" from read

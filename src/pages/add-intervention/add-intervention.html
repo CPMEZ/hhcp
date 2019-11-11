@@ -38,30 +38,10 @@
     <p class="hint">{{intervention.hint}}</p>
   </ion-item>
   <ion-list>
-    <ion-list-header>Designate the Discipline/Care Team for this Intervention:</ion-list-header>
-    <ion-item>
-      <ion-label>Interdisciplinary</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.interdisciplinary"></ion-checkbox>
-    </ion-item>
+    <ion-list-header>Discipline/Care Team for this Intervention:</ion-list-header>
     <ion-item>
       <ion-label>Nursing</ion-label>
       <ion-checkbox [(ngModel)]="intervention.nursing"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Aide</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.aide"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Bereavement</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.bereavement"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Dietary</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.dietary"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Music/Other</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.music"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Occupational Therapy</ion-label>
@@ -72,24 +52,28 @@
       <ion-checkbox [(ngModel)]="intervention.PT"></ion-checkbox>
     </ion-item>
     <ion-item>
+      <ion-label>Speech-language Pathology</ion-label>
+      <ion-checkbox [(ngModel)]="intervention.speech"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Medical Social Work</ion-label>
+      <ion-checkbox [(ngModel)]="intervention.social"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Aide</ion-label>
+      <ion-checkbox [(ngModel)]="intervention.aide"></ion-checkbox>
+    </ion-item>
+    <ion-item>
       <ion-label>Pharmacist</ion-label>
       <ion-checkbox [(ngModel)]="intervention.pharmacist"></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>Social Work</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.social"></ion-checkbox>
+      <ion-label>Dietician</ion-label>
+      <ion-checkbox [(ngModel)]="intervention.dietician"></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>Spiritual Counselor</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.spiritual"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Speech Therapy</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.speech"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Volunteer</ion-label>
-      <ion-checkbox [(ngModel)]="intervention.volunteer"></ion-checkbox>
+      <ion-label>Respiratory Therapy</ion-label>
+      <ion-checkbox [(ngModel)]="intervention.RT"></ion-checkbox>
     </ion-item>
   </ion-list>
   <ion-item>

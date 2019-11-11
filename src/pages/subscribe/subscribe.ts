@@ -43,7 +43,7 @@ export class SubscribePage {
 
   setup() {
     // subscribe trans success,
-    // now create our new user on cpapi
+    // now create our new user on hhapi
 
     // TODO need an android version?  no platform-specific stuff in here--do in createSubscription
     // ensure good format for userid

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationProvider } from '../authentication/authentication';
-import { CPAPI } from '../cpapi/cpapi';
+import { HHAPI } from '../hhapi/hhapi';
 import { CacheProvider } from '../cache/cache';
 
 const MASTER_KEY = 'my first thought was he lied in every word';  // from childe rowland to the dark tower came, browning, 1855
@@ -34,7 +34,7 @@ export class MasterPlansProvider {
     this._previewSelection = v;
   }
 
-  constructor(private cpapi: CPAPI,
+  constructor(private hhapi: HHAPI,
     public auth: AuthenticationProvider,
     private cache: CacheProvider) {
     console.log('Constructor MasterPlansProvider Provider');
@@ -53,9 +53,9 @@ export class MasterPlansProvider {
           .then((data) => resolve(data))
           .catch(() => {
             // not in cache, read from cpi
-            var path = this.cpapi.apiURL + "master/" + type;
+            var path = this.hhapi.apiURL + "master/" + type;
             if (filter) { path = path + "?f=" + filter; }
-            this.cpapi.getData(path)
+            this.hhapi.getData(path)
               .then((data) => {
                 this.cache.write(type, MASTER_KEY, data);
                 resolve(data)

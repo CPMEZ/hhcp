@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 import CryptoJS from 'crypto-js';
 
-import { CPAPI } from '../cpapi/cpapi';
+import { HHAPI } from '../hhapi/hhapi';
 import { AuthenticationProvider } from '../authentication/authentication';
 import { LocalStoreProvider } from '../local-store/local-store';
 import { MasterPlansProvider } from '../master-plans/master-plans';
@@ -26,7 +26,7 @@ export class PersonalPlansProvider {
     public conn: ConnectionProvider,
     private LSP: LocalStoreProvider,
     public auth: AuthenticationProvider,
-    private cpapi: CPAPI,
+    private hhapi: HHAPI,
     public MPP: MasterPlansProvider) {
     console.log('Constructor PersonalPlansProvider Provider');
   }
@@ -374,7 +374,7 @@ export class PersonalPlansProvider {
       let e = this.packagePlans();
       e = this.encrypt(e, this.auth.key);
       const p: {} = { plans: e };
-      var api: string = this.cpapi.apiURL + "data/" + this.auth.user;
+      var api: string = this.hhapi.apiURL + "data/" + this.auth.user;
       this.http.post(api, p)
         .subscribe(data => { console.log("saved to web"); },
           error => {
@@ -388,7 +388,7 @@ export class PersonalPlansProvider {
 
   readFromWeb(): Promise<object> {
     return new Promise(resolve => {
-      var api: string = this.cpapi.apiURL + "data/" + this.auth.user;
+      var api: string = this.hhapi.apiURL + "data/" + this.auth.user;
       try {
         this.http.get(api)
           .subscribe((data) => {
