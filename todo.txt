@@ -8,6 +8,9 @@ x create interventions list
 x create goals list
 x create problems list
 
+NOTE android target is specified in platforms/android/project.properties and "overridden" in platforms/android/build.gradle
+don't know how to change it for compile on ionic appflow
+
 
 x add ?+ to discipline
 x change >>+ to conditions only

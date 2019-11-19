@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-// import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
+
+const APP_NAME = 'hhcp';
 
 @Injectable()
 export class LocalStoreProvider {
@@ -11,7 +12,7 @@ export class LocalStoreProvider {
 
   set(key: string, value): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.storage.set(key, value)
+      this.storage.set(key + '_' + APP_NAME, value)
         .then((result) => resolve(true))
         .catch((reason) => {
           console.info(reason);
@@ -22,7 +23,7 @@ export class LocalStoreProvider {
 
   get(key: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.storage.get(key)
+      this.storage.get(key + '_' + APP_NAME)
         .then(result => resolve(result))
         .catch((reason) => {
           console.info(reason);
@@ -32,7 +33,7 @@ export class LocalStoreProvider {
   }
 
   remove(key: string) {
-    this.storage.remove(key);
+    this.storage.remove(key + '_' + APP_NAME);
   }
 
   clear() {

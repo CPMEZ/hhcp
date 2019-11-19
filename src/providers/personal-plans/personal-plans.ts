@@ -351,7 +351,7 @@ export class PersonalPlansProvider {
 
   readFromLocal(): Promise<object> {
     return new Promise(resolve => {
-      const userStorageKey = STORAGE_KEY + '_' + this.auth.user
+      const userStorageKey = STORAGE_KEY + '_' + this.auth.user 
       this.LSP.get(userStorageKey)
         .then((data) => {
           // console.log('read local with', userStorageKey);

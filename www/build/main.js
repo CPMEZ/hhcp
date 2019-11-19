@@ -4005,11 +4005,11 @@ var map = {
 		13
 	],
 	"../pages/login/login.module": [
-		769,
+		768,
 		12
 	],
 	"../pages/lookup-plan/lookup-plan.module": [
-		768,
+		769,
 		11
 	],
 	"../pages/lookup/lookup.module": [
@@ -4532,8 +4532,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/edit-intervention/edit-intervention.module#EditInterventionPageModule', name: 'EditInterventionPage', segment: 'edit-intervention', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-plan/edit-plan.module#EditPlanPageModule', name: 'EditPlanPage', segment: 'edit-plan', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-problem/edit-problem.module#EditProblemPageModule', name: 'EditProblemPage', segment: 'edit-problem', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/lookup-plan/lookup-plan.module#LookupPlanPageModule', name: 'LookupPlanPage', segment: 'lookup-plan', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/lookup-plan/lookup-plan.module#LookupPlanPageModule', name: 'LookupPlanPage', segment: 'lookup-plan', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/lookup/lookup.module#LookupPageModule', name: 'LookupPage', segment: 'lookup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/plan-menu/plan-menu.module#PlanMenuPageModule', name: 'PlanMenuPage', segment: 'plan-menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/preview/preview.module#PreviewPageModule', name: 'PreviewPage', segment: 'preview', priority: 'low', defaultHistory: [] },
@@ -4746,7 +4746,7 @@ var WelcomePage = /** @class */ (function () {
     };
     WelcomePage = WelcomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-welcome',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/'<ion-header>\n\n\n\n  <ion-navbar class="navbarStyle" color="primary">\n\n    <ion-title><em>welcome to</em></ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding id="welcome">\n\n\n\n  <div text-center>\n\n    <h2><em>Tina Marrelli\'s</em></h2>\n\n    <img src="assets/imgs/TMFun600.png" class="logo" />\n\n    <h1>Red Book Home Health Care Planning</h1>\n\n    <h5>Copyright ©2019 Marrelli and Associates, Inc.</h5>\n\n  </div>\n\n  <br>\n\n  <div text-center>\n\n    <h2 *ngIf="conn.internet && auth.userLoggedIn">Welcome Back! You\'re logged in as {{auth.user}}.</h2>\n\n  </div>\n\n  <div text-center>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="workOnline()">\n\n      CONTINUE\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && !auth.userLoggedIn" (click)="login()">\n\n      LOG IN\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="logout()">\n\n      LOG OUT\n\n    </button>\n\n    <h3 *ngIf="!conn.internet">No internet connection? Could not connect to Red Book cloud.</h3>\n\n    <button ion-button (click)="workOffline()">\n\n      WORK OFFLINE\n\n    </button>\n\n    <h2 class="underline" (click)="subscribe()">Not a subscriber? Subscribe now</h2>\n\n    <h2>\n\n      <a style="color: white;" href="#"\n\n      onclick="window.open(\'https://marrelli.com/app-support/video/\', \'_blank\', \'location=no\'); return false;">Watch a\n\n      HOW-TO Video</a>\n\n    </h2>\n\n    <h2 class="underline" (click)="previewStd()">Preview Red Book Standard Plans</h2>\n\n    <br>\n\n    <h4 (click)="showTerms()">Using the app indicates you accept the <span class="underline">License Agreement.</span>\n\n    </h4>\n\n  </div>\n\n  <p style="color: white; font-size: xx-small; text-align: center">v0.0.1.0</p>\n\n</ion-content>'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/,
+            selector: 'page-welcome',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/'<ion-header>\n\n\n\n  <ion-navbar class="navbarStyle" color="primary">\n\n    <ion-title><em>welcome to</em></ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding id="welcome">\n\n\n\n  <div text-center>\n\n    <h2><em>Tina Marrelli\'s</em></h2>\n\n    <img src="assets/imgs/TMFun600.png" class="logo" />\n\n    <h2>Red Book</h2>\n\n    <h1>Home Health Care Planning</h1>\n\n    <h5>Copyright ©2019 Marrelli and Associates, Inc.</h5>\n\n  </div>\n\n  <br>\n\n  <div text-center>\n\n    <h2 *ngIf="conn.internet && auth.userLoggedIn">Welcome Back! You\'re logged in as {{auth.user}}.</h2>\n\n  </div>\n\n  <div text-center>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="workOnline()">\n\n      CONTINUE\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && !auth.userLoggedIn" (click)="login()">\n\n      LOG IN\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="logout()">\n\n      LOG OUT\n\n    </button>\n\n    <h3 *ngIf="!conn.internet">No internet connection? Could not connect to Red Book cloud.</h3>\n\n    <button ion-button (click)="workOffline()">\n\n      WORK OFFLINE\n\n    </button>\n\n    <h2 class="underline" (click)="subscribe()">Not a subscriber? Subscribe now</h2>\n\n    <h2>\n\n      <a style="color: white;" href="#"\n\n      onclick="window.open(\'https://marrelli.com/app-support/video/\', \'_blank\', \'location=no\'); return false;">Watch a\n\n      HOW-TO Video</a>\n\n    </h2>\n\n    <h2 class="underline" (click)="previewStd()">Preview Red Book Standard Plans</h2>\n\n    <br>\n\n    <h4 (click)="showTerms()">Using the app indicates you accept the <span class="underline">License Agreement.</span>\n\n    </h4>\n\n  </div>\n\n  <p style="color: white; font-size: xx-small; text-align: center">v0.0.1.0</p>\n\n</ion-content>'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */],
@@ -5456,8 +5456,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import 'rxjs/add/operator/map';
 
+var APP_NAME = 'hhcp';
 var LocalStoreProvider = /** @class */ (function () {
     function LocalStoreProvider(storage) {
         this.storage = storage;
@@ -5466,7 +5466,7 @@ var LocalStoreProvider = /** @class */ (function () {
     LocalStoreProvider.prototype.set = function (key, value) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.storage.set(key, value)
+            _this.storage.set(key + '_' + APP_NAME, value)
                 .then(function (result) { return resolve(true); })
                 .catch(function (reason) {
                 console.info(reason);
@@ -5477,7 +5477,7 @@ var LocalStoreProvider = /** @class */ (function () {
     LocalStoreProvider.prototype.get = function (key) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.storage.get(key)
+            _this.storage.get(key + '_' + APP_NAME)
                 .then(function (result) { return resolve(result); })
                 .catch(function (reason) {
                 console.info(reason);
@@ -5486,7 +5486,7 @@ var LocalStoreProvider = /** @class */ (function () {
         });
     };
     LocalStoreProvider.prototype.remove = function (key) {
-        this.storage.remove(key);
+        this.storage.remove(key + '_' + APP_NAME);
     };
     LocalStoreProvider.prototype.clear = function () {
         this.storage.clear();
