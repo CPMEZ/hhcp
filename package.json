@@ -1,6 +1,6 @@
 {
   "name": "hhcp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Stan Bell",
   "homepage": "http://marrelli.com/",
   "private": true,
@@ -36,9 +36,8 @@
     "@ionic/storage": "^2.2.0",
     "@types/crypto-js": "^3.1.43",
     "@types/pdfmake": "^0.1.1",
-    "cordova-android": "7.1.4",
     "cordova-clipboard": "^1.2.1",
-    "cordova-ios": "4.5.5",
+    "cordova-ios": "5.0.1",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-document-viewer": "^0.9.10",
     "cordova-plugin-email-composer": "^0.8.15",
@@ -47,7 +46,7 @@
     "cordova-plugin-inapppurchase": "^1.2.0",
     "cordova-plugin-ionic": "^5.1.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
-    "cordova-plugin-ionic-webview": "4.1.0",
+    "cordova-plugin-ionic-webview": "^2.1.0",
     "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-printer": "^0.7.3",
     "cordova-plugin-splashscreen": "~5.0.2",
@@ -94,9 +93,6 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-inappbrowser": {}
     },
-    "platforms": [
-      "ios",
-      "android"
-    ]
+    "platforms": []
   }
 }

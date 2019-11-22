@@ -45,14 +45,14 @@ export class SubselectPage {
     alert('mockInitStore');
     this.products = [
       {
-        title: 'hhcpsubmonthly',
+        title: 'HHCPSubMonthly',
         price: 5.99
       }
     ]
     // ios
     // this.products = [
     //   {
-    //     title: 'CP3SubMonthly',
+    //     title: 'HHCPSubMonthly',
     //     price: 5.99
     //   }
     // ]
@@ -170,7 +170,7 @@ export class SubselectPage {
 
   // test() {
   //   // if (this.plt.is('browser')) {
-  //   this.navCtrl.push(SubscribePage, { id: 'CP3SubMonthly' });
+  //   this.navCtrl.push(SubscribePage, { id: 'HHCPSubMonthly' });
   //   // }
   // }
 
