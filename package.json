@@ -72,7 +72,7 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-ionic": {
-        "APP_ID": "8040e763",
+        "APP_ID": "b8bfaff6",
         "CHANNEL_NAME": "Master",
         "UPDATE_METHOD": "background"
       },
@@ -93,6 +93,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-inappbrowser": {}
     },
-    "platforms": []
+    "platforms": [
+      "ios"
+    ]
   }
 }
