@@ -1,4 +1,4 @@
-_ replace sample care plan for HH
+x replace sample care plan for HH
 
 _ add a way to message customers, and have them reply
 _ share plans between subscribers

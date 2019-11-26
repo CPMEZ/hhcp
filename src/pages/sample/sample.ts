@@ -3,6 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { SampleDetailPage } from '../sample-detail/sample-detail';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { SubselectPage } from '../subselect/subselect';
+import { HelpPage } from '../help/help';
 
 @IonicPage()
 @Component({
@@ -12,36 +13,43 @@ import { SubselectPage } from '../subselect/subselect';
 export class SamplePage {
 
   itemsList = [
-      { text: "Alzheimer's & Dementia" },
-      { text: "Amyotrophic Lateral Sclerosis (ALS)" },
-      { text: "Bedridden" },
-      { text: "Brain Tumor" },
-      { text: "Breast Cancer" },
-      { text: "Cancer" },
-      { text: "Cardiac" },
-      { text: "Cerebrovascular accident (CVA)" },
-      { text: "Children" },
-      { text: "Constipation & Impaction" },
-      { text: "Depression & Psychiatric" },
-      { text: "Diabetes" },
-      { text: "Functional Decline" },
-      { text: "Enteral & Total parenteral nutrition (TPN)" },
-      { text: "Head & Neck Cancer" },
-      { text: "Home Health Nurse" },
-      { text: "Human Immunodeficiency Virus/Acquired Immune Deficiency Syndrome (HIV/AIDS)" },
-      { text: "Imminent Death" },
-      { text: "Infection Control and Prevention" },
-      { text: "Infusion" },
-      { text: "Lung/Respiratory" },
-      { text: "Ostomy" },
-      { text: "Oxygen Use" },
-      { text: "Pain Management" },
-      { text: "Prostate Cancer" },
-      { text: "Renal Disease" },
-      { text: "Urinary Catheter" },
-      { text: "Wound and Pressure Injury" }
-    ]
-
+    {"text": "Assessment & Critical Thinking"},
+    {"text": "Alzheimer's & Dementia Care"},
+    {"text": "Behavioral Care"},
+    {"text": "Bed-chair Bound"},
+    {"text": "Cancer Care"},
+    {"text": "Cardiac & Circulatory Care"},
+    {"text": "Caregiver Support"},
+    {"text": "Constipation Care"},
+    {"text": "Endocrine & Diabetes Care"},
+    {"text": "End of Life Care"},
+    {"text": "Enteral & PN Care"},
+    {"text": "Fall Risk & Prevention"},
+    {"text": "Infection & Immunocompromised"},
+    {"text": "Infusion"},
+    {"text": "Injections & Labs"},
+    {"text": "Hepatobiliary & Pancreatic Care"},
+    {"text": "Med Management Care"},
+    {"text": "Musculoskeletal Care"},
+    {"text": "Neuro & Stroke Care"},
+    {"text": "Nutrition & Dietary"},
+    {"text": "Older Adult Care"},
+    {"text": "Ostomy Care"},
+    {"text": "Oxygen Care"},
+    {"text": "Pain Management"},
+    {"text": "Pediatric Care"},
+    {"text": "Renal Care"},
+    {"text": "Respiratory & COPD Care"},
+    {"text": "Standard Precautions"},
+    {"text": "Surgical Care"},
+    {"text": "Urinary Catheter Care"},
+    {"text": "Wound Care"},
+    {"text": "Aide"},
+    {"text": "Occupational Therapy"},
+    {"text": "Physical Therapy"},
+    {"text": "Speech-language Pathologist"},
+    {"text": "Medical Social Worker"}
+]
 
   constructor(private navCtrl: NavController, 
     public auth: AuthenticationProvider) {
@@ -53,6 +61,10 @@ export class SamplePage {
 
   subscribe() {
     this.navCtrl.push(SubselectPage);
+  }
+
+  help() {
+    this.navCtrl.push(HelpPage);
   }
 
 }
