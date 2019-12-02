@@ -66,6 +66,7 @@ export class PersonalPlansProvider {
 
   // add new plan
   addPlan(np: any, type: string) {
+    console.log('addPlan', type);
     // initialize the plan structure for a new one
     let newPlan: any;
     if (type === 'empty') {
@@ -77,21 +78,24 @@ export class PersonalPlansProvider {
     }
     const d: Date = new Date();
     newPlan.created = d.toLocaleDateString();
+    console.log('addPlan plan created', newPlan.created);
     newPlan.updated = d.toLocaleDateString();
     // if (!this.plans) { this.initPlans(); }
     this.plans.push(newPlan);
     // console.log(this.plans);
     this.write();
   }
-
+  
   // // add standard plan section
   standardPlan(np, condition) {
+    console.log('standardPlan');
     // add a standard plan
     let newPlan: any;
     newPlan = { name: np.name, text: np.text, created: "", updated: "", problems: [] };
     if (newPlan.text === "") { newPlan.text = condition["text"]; }
     const d: Date = new Date();
     newPlan.created = d.toLocaleDateString();
+    console.log('standardPlan plan created', newPlan.created);
     newPlan.updated = d.toLocaleDateString();
     this.MPP.getMaster(condition["file"])
       .then(data => {
@@ -104,6 +108,18 @@ export class PersonalPlansProvider {
   }
 
   mergePlans(targetPlan: any, sourcePlan: any): any {
+    if (targetPlan.created === "") {
+      // put in created date
+      const d: Date = new Date();
+      targetPlan.created = d.toLocaleDateString();
+      console.log('mergePlans plan created', targetPlan.created);
+      targetPlan.updated = d.toLocaleDateString();
+    } else {
+      // put in updated date
+      const d: Date = new Date();
+      console.log('mergePlans plan updated', targetPlan.updated);
+      targetPlan.updated = d.toLocaleDateString();
+    }
     if (targetPlan["problems"]) {
       sourcePlan["problems"].forEach(p => {
         let found = false;
