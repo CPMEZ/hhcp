@@ -484,7 +484,7 @@ const GUIDED_PLAN = {
   updated: "",
   problems: [
     {
-      text: "General Observation/Assessment",
+      text: "Assessment and Critical Thinking",
       hint: "",
       goals: [],
       interventions: [],
@@ -500,7 +500,7 @@ const GUIDED_PLAN = {
       icon: "arrow-dropdown"
     },
     {
-      text: "Comfort Care/Symptom Control",
+      text: "Hydration/Nutrition/Elimination",
       hint: "",
       goals: [],
       interventions: [],
@@ -516,7 +516,7 @@ const GUIDED_PLAN = {
       icon: "arrow-dropdown"
     },
     {
-      text: "Emotional/Spiritual",
+      text: "Care Coordination/Case Management/Discharge Planning",
       hint: "",
       goals: [],
       interventions: [],
@@ -524,39 +524,7 @@ const GUIDED_PLAN = {
       icon: "arrow-dropdown"
     },
     {
-      text: "Skin Care",
-      hint: "",
-      goals: [],
-      interventions: [],
-      expanded: true,
-      icon: "arrow-dropdown"
-    },
-    {
-      text: "Hydration/Nutrition/Elimination",
-      hint: "",
-      goals: [],
-      interventions: [],
-      expanded: true,
-      icon: "arrow-dropdown"
-    },
-    {
-      text: "Therapeutic/Medication",
-      hint: "",
-      goals: [],
-      interventions: [],
-      expanded: true,
-      icon: "arrow-dropdown"
-    },
-    {
-      text: "Care Coordination/Discharge",
-      hint: "",
-      goals: [],
-      interventions: [],
-      expanded: true,
-      icon: "arrow-dropdown"
-    },
-    {
-      text: "Other Considerations",
+      text: "Homebound Considerations",
       hint: "",
       goals: [],
       interventions: [],
