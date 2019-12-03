@@ -4,6 +4,8 @@ import { LocalStoreProvider } from '../local-store/local-store';
 
 import CryptoJS from 'crypto-js';
 
+const APP_NAME = 'hhcp';
+
 // cache uses passed-in key for encryption
 
 @Injectable()
@@ -34,19 +36,19 @@ export class CacheProvider {
         for (const t in k) {
           if (k.hasOwnProperty(t)) {
             // remove everything except session and plans
-            if (k[t] !== "cp_session"
-              && k[t] !== "plans") {
-                console.log('clearing ', k[t]);
-              this.LSP.remove(k[t]);
-            } else {
+            if (k[t] === "cp_session" + '_' + APP_NAME
+              && k[t] === "plans" + '_' + APP_NAME) {
               console.log('not clearing ', k[t]);
+            } else {
+              console.log('clearing ', k[t]);
+              this.LSP.remove(k[t]);
             }
           }
         }
       });
   }
 
-  write(type: string, eKey: string, input: string ) {
+  write(type: string, eKey: string, input: string) {
     console.log('caching ' + type);
     let p = this.encrypt(this.package(type, input), eKey);
     this.LSP.set(type, p)
@@ -128,7 +130,7 @@ export class CacheProvider {
     // console.log("key", key);
     return CryptoJS.AES.encrypt(data, key).toString();
   }
-  
+
   decrypt(data: string, key: string): string {
     // console.log('decrypting');
     // console.log("key", key);

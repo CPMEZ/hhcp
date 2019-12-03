@@ -33,7 +33,8 @@ export class LocalStoreProvider {
   }
 
   remove(key: string) {
-    this.storage.remove(key + '_' + APP_NAME);
+    // including app_name conflicts with cache.clearCache
+    this.storage.remove(key);
   }
 
   clear() {

@@ -156,6 +156,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+var APP_NAME = 'hhcp';
 // cache uses passed-in key for encryption
 var CacheProvider = /** @class */ (function () {
     // secret: string;
@@ -181,13 +182,13 @@ var CacheProvider = /** @class */ (function () {
             for (var t in k) {
                 if (k.hasOwnProperty(t)) {
                     // remove everything except session and plans
-                    if (k[t] !== "cp_session"
-                        && k[t] !== "plans") {
-                        console.log('clearing ', k[t]);
-                        _this.LSP.remove(k[t]);
+                    if (k[t] === "cp_session" + '_' + APP_NAME
+                        && k[t] === "plans" + '_' + APP_NAME) {
+                        console.log('not clearing ', k[t]);
                     }
                     else {
-                        console.log('not clearing ', k[t]);
+                        console.log('clearing ', k[t]);
+                        _this.LSP.remove(k[t]);
                     }
                 }
             }
@@ -287,10 +288,10 @@ var CacheProvider = /** @class */ (function () {
     };
     CacheProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_store_local_store__["a" /* LocalStoreProvider */],
-            __WEBPACK_IMPORTED_MODULE_0__authentication_authentication__["a" /* AuthenticationProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__local_store_local_store__["a" /* LocalStoreProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__local_store_local_store__["a" /* LocalStoreProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__authentication_authentication__["a" /* AuthenticationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__authentication_authentication__["a" /* AuthenticationProvider */]) === "function" && _b || Object])
     ], CacheProvider);
     return CacheProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=cache.js.map
@@ -2752,11 +2753,10 @@ var PreviewPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-preview',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/preview/preview.html"*/'<ion-header>\n\n  <ion-navbar class="navbarStyle" color="primary">\n    <ion-title>Select Care</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <!-- <p class="helpful">Preview before adding </p> -->\n  <p class="helpful">Check the items you want to include</p>\n    <button ion-button (click)="selectAll()">Select All</button>\n    <button ion-button (click)="selectNone()">Select None</button>\n    <!-- hack because ppp.plans[] have .name, and master have .text -->\n  <h1 *ngIf="type!==\'My Plan\'" class="h1text">{{type}}: {{copyOfSource.text}}</h1>\n  <h1 *ngIf="type==\'My Plan\'" class="h1text">{{type}}: {{copyOfSource.name}}</h1>\n  <div *ngFor="let p of copyOfSource.problems">\n    <p class="ptext prob">{{p.text}}</p>\n    <div>\n      <div class="goal"><em>Outcomes</em></div>\n      <div *ngFor="let g of p.goals">\n        <ion-checkbox [(ngModel)]="g.checked"></ion-checkbox>\n        <label class="ptext goal"><em>{{g.term}}</em> {{g.text}}</label>\n      </div>\n      <div class="int"><em>Interventions</em></div>\n      <div *ngFor="let n of p.interventions">\n          <ion-checkbox [(ngModel)]="n.checked"></ion-checkbox>\n        <label class="ptext int">{{n.text}}</label>\n      </div>\n    </div>\n  </div>\n  <button ion-button (click)="save()">Save</button>\n  <button ion-button (click)="cancelEdit()">Cancel</button>\n</ion-content>\n'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/preview/preview.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_personal_plans_personal_plans__["a" /* PersonalPlansProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_personal_plans_personal_plans__["a" /* PersonalPlansProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_personal_plans_personal_plans__["a" /* PersonalPlansProvider */]) === "function" && _c || Object])
     ], PreviewPage);
     return PreviewPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=preview.js.map
@@ -5433,7 +5433,8 @@ var LocalStoreProvider = /** @class */ (function () {
         });
     };
     LocalStoreProvider.prototype.remove = function (key) {
-        this.storage.remove(key + '_' + APP_NAME);
+        // including app_name conflicts with cache.clearCache
+        this.storage.remove(key);
     };
     LocalStoreProvider.prototype.clear = function () {
         this.storage.clear();
@@ -5451,9 +5452,10 @@ var LocalStoreProvider = /** @class */ (function () {
     };
     LocalStoreProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]) === "function" && _a || Object])
     ], LocalStoreProvider);
     return LocalStoreProvider;
+    var _a;
 }());
 
 // setObject(key: string, object: Object) {
