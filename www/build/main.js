@@ -26,6 +26,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+var ACT_ID = "assessment";
 var LookupPlanPage = /** @class */ (function () {
     function LookupPlanPage(navCtrl, lc, navParams, MPP, PPP) {
         this.navCtrl = navCtrl;
@@ -34,6 +35,7 @@ var LookupPlanPage = /** @class */ (function () {
         this.MPP = MPP;
         this.PPP = PPP;
         this.searchingMaster = true;
+        this.includeACT = true;
         this.types = this.navParams.get('types');
         this.type = this.navParams.get('type');
         this.searchTerm = this.navParams.get('searchTerm');
@@ -43,9 +45,11 @@ var LookupPlanPage = /** @class */ (function () {
         if (this.type === 'condition'
             || this.type === 'discipline') {
             this.searchingMaster = true;
+            this.includeACT = !(this.target.problems && this.target.problems.length > 0);
         }
         else {
             this.searchingMaster = false;
+            this.includeACT = false;
         }
     }
     LookupPlanPage.prototype.ionViewDidEnter = function () {
@@ -86,19 +90,43 @@ var LookupPlanPage = /** @class */ (function () {
         // get the selected content, 
         // go to preview/select page
         // console.log('getMaster', which);
+        var selectedPlan;
+        var actPlan;
         this.MPP.getMaster(which["file"])
             .then(function (data) {
-            // console.log('getMaster', data );
-            var d = JSON.parse(data);
-            // console.log('getMaster', d );
-            // console.log('d:type', this.type, d[this.type]);
-            // nav to the preview page
-            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__preview_preview__["a" /* PreviewPage */], {
-                source: d[_this.type],
-                target: _this.target,
-                fromPage: _this.fromPage,
-                type: _this.type
-            });
+            selectedPlan = JSON.parse(data);
+            selectedPlan = selectedPlan[_this.type];
+            console.log('getMaster', selectedPlan);
+            if (_this.includeACT) {
+                // if requested to include ACT,
+                // get ACT and merge it into the selected master 
+                // before presenting the preview page
+                _this.MPP.getMaster(ACT_ID)
+                    .then(function (data) {
+                    actPlan = JSON.parse(data);
+                    // console.log('getMaster-ACT_ID1', actPlan );
+                    actPlan = actPlan["condition"]; // HARD-CODED TYPE
+                    // console.log('getMaster-ACT_ID2', actPlan);
+                    _this.PPP.mergePlans(selectedPlan, actPlan);
+                    // console.log('getMaster-ACT_ID3', selectedPlan);
+                    // nav to the preview page
+                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__preview_preview__["a" /* PreviewPage */], {
+                        source: selectedPlan,
+                        target: _this.target,
+                        fromPage: _this.fromPage,
+                        type: _this.type
+                    });
+                });
+            }
+            else {
+                // nav to the preview page
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__preview_preview__["a" /* PreviewPage */], {
+                    source: selectedPlan,
+                    target: _this.target,
+                    fromPage: _this.fromPage,
+                    type: _this.type
+                });
+            }
         });
     };
     LookupPlanPage.prototype.getPersonal = function (which) {
@@ -118,7 +146,7 @@ var LookupPlanPage = /** @class */ (function () {
     };
     LookupPlanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-lookup-plan',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/lookup-plan/lookup-plan.html"*/'<ion-header>\n\n  <ion-navbar class="navbarStyle" color="primary">\n    <ion-title>Select {{searchName}}</ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="help()">\n        <ion-icon name="help"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <p class="helpful">{{searchTitle}}</p>\n  <br>\n  <ion-toolbar color=primary>\n    <ion-searchbar class="search" [(ngModel)]="searchTerm" debounce=1000 placeholder="Search" (ionInput)="getList()">\n    </ion-searchbar>\n  </ion-toolbar>\n  <div *ngIf="itemsList">\n    <ion-list>\n      <div ion-item no-lines *ngFor="let z of itemsList">\n        <!-- definite hack -->\n        <p class="searchList" *ngIf="searchingMaster" (click)="choose(z)">{{z.text}}</p>\n        <p class="searchList" *ngIf="!searchingMaster" (click)="choose(z)">{{z.name}}</p>\n      </div>\n    </ion-list>\n  </div>\n</ion-content>'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/lookup-plan/lookup-plan.html"*/,
+            selector: 'page-lookup-plan',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/lookup-plan/lookup-plan.html"*/'<ion-header>\n\n  <ion-navbar class="navbarStyle" color="primary">\n    <ion-title>Select {{searchName}}</ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="help()">\n        <ion-icon name="help"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <p class="helpful">{{searchTitle}}</p>\n  <div *ngIf="searchingMaster">\n    <p class="helpful">You can choose to include the standard Assessment & Critical Thinking\n      content with your selected condition- or discipline-based plan.</p>\n    <ion-checkbox [(ngModel)]="includeACT"></ion-checkbox>\n    <label>Include Assessment & Critical Thinking</label>\n  </div>\n  <br>\n  <ion-toolbar color=primary>\n    <ion-searchbar class="search" [(ngModel)]="searchTerm" debounce=1000 placeholder="Search" (ionInput)="getList()">\n    </ion-searchbar>\n  </ion-toolbar>\n  <div *ngIf="itemsList">\n    <ion-list>\n      <div ion-item no-lines *ngFor="let z of itemsList">\n        <!-- definite hack -->\n        <p class="searchList" *ngIf="searchingMaster" (click)="choose(z)">{{z.text}}</p>\n        <p class="searchList" *ngIf="!searchingMaster" (click)="choose(z)">{{z.name}}</p>\n      </div>\n    </ion-list>\n  </div>\n</ion-content>'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/lookup-plan/lookup-plan.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
@@ -288,10 +316,10 @@ var CacheProvider = /** @class */ (function () {
     };
     CacheProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__local_store_local_store__["a" /* LocalStoreProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__local_store_local_store__["a" /* LocalStoreProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__authentication_authentication__["a" /* AuthenticationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__authentication_authentication__["a" /* AuthenticationProvider */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__local_store_local_store__["a" /* LocalStoreProvider */],
+            __WEBPACK_IMPORTED_MODULE_0__authentication_authentication__["a" /* AuthenticationProvider */]])
     ], CacheProvider);
     return CacheProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=cache.js.map
@@ -2753,10 +2781,11 @@ var PreviewPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-preview',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/preview/preview.html"*/'<ion-header>\n\n  <ion-navbar class="navbarStyle" color="primary">\n    <ion-title>Select Care</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <!-- <p class="helpful">Preview before adding </p> -->\n  <p class="helpful">Check the items you want to include</p>\n    <button ion-button (click)="selectAll()">Select All</button>\n    <button ion-button (click)="selectNone()">Select None</button>\n    <!-- hack because ppp.plans[] have .name, and master have .text -->\n  <h1 *ngIf="type!==\'My Plan\'" class="h1text">{{type}}: {{copyOfSource.text}}</h1>\n  <h1 *ngIf="type==\'My Plan\'" class="h1text">{{type}}: {{copyOfSource.name}}</h1>\n  <div *ngFor="let p of copyOfSource.problems">\n    <p class="ptext prob">{{p.text}}</p>\n    <div>\n      <div class="goal"><em>Outcomes</em></div>\n      <div *ngFor="let g of p.goals">\n        <ion-checkbox [(ngModel)]="g.checked"></ion-checkbox>\n        <label class="ptext goal"><em>{{g.term}}</em> {{g.text}}</label>\n      </div>\n      <div class="int"><em>Interventions</em></div>\n      <div *ngFor="let n of p.interventions">\n          <ion-checkbox [(ngModel)]="n.checked"></ion-checkbox>\n        <label class="ptext int">{{n.text}}</label>\n      </div>\n    </div>\n  </div>\n  <button ion-button (click)="save()">Save</button>\n  <button ion-button (click)="cancelEdit()">Cancel</button>\n</ion-content>\n'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/preview/preview.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_personal_plans_personal_plans__["a" /* PersonalPlansProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_personal_plans_personal_plans__["a" /* PersonalPlansProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_personal_plans_personal_plans__["a" /* PersonalPlansProvider */]])
     ], PreviewPage);
     return PreviewPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=preview.js.map
@@ -3027,16 +3056,18 @@ var SamplePage = /** @class */ (function () {
             { "text": "Oxygen Care" },
             { "text": "Pain Management" },
             { "text": "Pediatric Care" },
+            { "text": "Rehabilitation" },
             { "text": "Renal Care" },
             { "text": "Respiratory & COPD Care" },
             { "text": "Standard Precautions" },
             { "text": "Surgical Care" },
             { "text": "Urinary Catheter Care" },
             { "text": "Wound Care" },
-            { "text": "Aide" },
-            { "text": "Occupational Therapy" },
+            { "text": "Nursing" },
             { "text": "Physical Therapy" },
             { "text": "Speech-language Pathologist" },
+            { "text": "Occupational Therapy" },
+            { "text": "Aide" },
             { "text": "Medical Social Worker" }
         ];
     }
@@ -3363,13 +3394,13 @@ var PersonalPlansProvider = /** @class */ (function () {
             // put in created date
             var d = new Date();
             targetPlan.created = d.toLocaleDateString();
-            console.log('mergePlans plan created', targetPlan.created);
+            // console.log('mergePlans plan created', targetPlan.created);
             targetPlan.updated = d.toLocaleDateString();
         }
         else {
             // put in updated date
             var d = new Date();
-            console.log('mergePlans plan updated', targetPlan.updated);
+            // console.log('mergePlans plan updated', targetPlan.updated);
             targetPlan.updated = d.toLocaleDateString();
         }
         if (targetPlan["problems"]) {
@@ -3384,8 +3415,14 @@ var PersonalPlansProvider = /** @class */ (function () {
                         p["expanded"] = true;
                         // add all the goals and interventions to the existing problem
                         // console.log("goals");
+                        // make sure the target has goals array to add into
+                        if (!targetPlan.problems[i].goals)
+                            targetPlan.problems[i].goals = [];
                         _this.addUndupItems(p["goals"], "text", targetPlan.problems[i].goals);
                         // console.log("interventions");
+                        // make sure the target has interventions array to add into
+                        if (!targetPlan.problems[i].interventions)
+                            targetPlan.problems[i].interventions = [];
                         _this.addUndupItems(p["interventions"], "text", targetPlan.problems[i].interventions);
                         break; // no need to look further
                     }
@@ -4693,7 +4730,7 @@ var WelcomePage = /** @class */ (function () {
     };
     WelcomePage = WelcomePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-welcome',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/'<ion-header>\n\n\n\n  <ion-navbar class="navbarStyle" color="primary">\n\n    <ion-title><em>welcome to</em></ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding id="welcome">\n\n\n\n  <div text-center>\n\n    <h2><em>Tina Marrelli\'s</em></h2>\n\n    <img src="assets/imgs/TMFun600.png" class="logo" />\n\n    <h2>Red Book</h2>\n\n    <h1>Home Health Care Planning</h1>\n\n    <h5>Copyright ©2019 Marrelli and Associates, Inc.</h5>\n\n  </div>\n\n  <br>\n\n  <div text-center>\n\n    <h2 *ngIf="conn.internet && auth.userLoggedIn">Welcome Back! You\'re logged in as {{auth.user}}.</h2>\n\n  </div>\n\n  <div text-center>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="workOnline()">\n\n      CONTINUE\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && !auth.userLoggedIn" (click)="login()">\n\n      LOG IN\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="logout()">\n\n      LOG OUT\n\n    </button>\n\n    <h3 *ngIf="!conn.internet">No internet connection? Could not connect to Red Book cloud.</h3>\n\n    <button ion-button (click)="workOffline()">\n\n      WORK OFFLINE\n\n    </button>\n\n    <h2 class="underline" (click)="subscribe()">Not a subscriber? Subscribe now</h2>\n\n    <h2>\n\n      <a style="color: white;" href="#"\n\n      onclick="window.open(\'https://marrelli.com/app-support/hhcp-video/\', \'_blank\', \'location=no\'); return false;">Watch a\n\n      HOW-TO Video</a>\n\n    </h2>\n\n    <h2 class="underline" (click)="previewStd()">Preview Red Book Standard Plans</h2>\n\n    <br>\n\n    <h4 (click)="showTerms()">Using the app indicates you accept the <span class="underline">License Agreement.</span>\n\n    </h4>\n\n  </div>\n\n  <p style="color: white; font-size: xx-small; text-align: center">v0.0.5.0</p>\n\n</ion-content>'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/,
+            selector: 'page-welcome',template:/*ion-inline-start:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/'<ion-header>\n\n\n\n  <ion-navbar class="navbarStyle" color="primary">\n\n    <ion-title><em>welcome to</em></ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding id="welcome">\n\n\n\n  <div text-center>\n\n    <h2><em>Tina Marrelli\'s</em></h2>\n\n    <img src="assets/imgs/welcomeCartoon600.png" class="logo" />\n\n    <h2>Red Book</h2>\n\n    <h1>Home Health Care Planning</h1>\n\n    <h5>Copyright ©2019 Marrelli and Associates, Inc.</h5>\n\n  </div>\n\n  <br>\n\n  <div text-center>\n\n    <h2 *ngIf="conn.internet && auth.userLoggedIn">Welcome Back! You\'re logged in as {{auth.user}}.</h2>\n\n  </div>\n\n  <div text-center>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="workOnline()">\n\n      CONTINUE\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && !auth.userLoggedIn" (click)="login()">\n\n      LOG IN\n\n    </button>\n\n    <button ion-button *ngIf="conn.internet && auth.userLoggedIn" (click)="logout()">\n\n      LOG OUT\n\n    </button>\n\n    <h3 *ngIf="!conn.internet">No internet connection? Could not connect to Red Book cloud.</h3>\n\n    <button ion-button (click)="workOffline()">\n\n      WORK OFFLINE\n\n    </button>\n\n    <h2 class="underline" (click)="subscribe()">Not a subscriber? Subscribe now</h2>\n\n    <h2>\n\n      <a style="color: white;" href="#"\n\n      onclick="window.open(\'https://marrelli.com/app-support/hhcp-video/\', \'_blank\', \'location=no\'); return false;">Watch a\n\n      HOW-TO Video</a>\n\n    </h2>\n\n    <h2 class="underline" (click)="previewStd()">Preview Red Book Standard Plans</h2>\n\n    <br>\n\n    <h4 (click)="showTerms()">Using the app indicates you accept the <span class="underline">License Agreement.</span>\n\n    </h4>\n\n  </div>\n\n  <p style="color: white; font-size: xx-small; text-align: center">v0.0.5.0</p>\n\n</ion-content>'/*ion-inline-end:"/mnt/F/Projects/CP/hhcp/src/pages/welcome/welcome.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */],
@@ -5452,10 +5489,9 @@ var LocalStoreProvider = /** @class */ (function () {
     };
     LocalStoreProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]])
     ], LocalStoreProvider);
     return LocalStoreProvider;
-    var _a;
 }());
 
 // setObject(key: string, object: Object) {

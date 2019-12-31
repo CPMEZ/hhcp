@@ -3,7 +3,7 @@ x replace sample care plan for HH
 _ add a way to message customers, and have them reply
 _ share plans between subscribers
 _ recognize expiration in cached user creds
-_ check new user.json & data.json are created writable on server
+x check new user.json & data.json are created writable on server
 
 
 x create interventions list
