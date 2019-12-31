@@ -30,7 +30,7 @@ export class PreviewPage {
     // reduce the content to only the items checked
     this.getChecked();
     // do the merge
-    this.PPP.mergePlans(this.target, this.copyOfSource)
+    this.PPP.mergePlans(this.target, this.copyOfSource) 
     // now go to page we're called from
     if (this.fromPage === 'plans') {
       // we're adding from the plans page

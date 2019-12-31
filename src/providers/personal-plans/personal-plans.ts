@@ -112,12 +112,12 @@ export class PersonalPlansProvider {
       // put in created date
       const d: Date = new Date();
       targetPlan.created = d.toLocaleDateString();
-      console.log('mergePlans plan created', targetPlan.created);
+      // console.log('mergePlans plan created', targetPlan.created);
       targetPlan.updated = d.toLocaleDateString();
     } else {
       // put in updated date
       const d: Date = new Date();
-      console.log('mergePlans plan updated', targetPlan.updated);
+      // console.log('mergePlans plan updated', targetPlan.updated);
       targetPlan.updated = d.toLocaleDateString();
     }
     if (targetPlan["problems"]) {
@@ -132,8 +132,12 @@ export class PersonalPlansProvider {
             p["expanded"] = true;
             // add all the goals and interventions to the existing problem
             // console.log("goals");
+            // make sure the target has goals array to add into
+            if (!targetPlan.problems[i].goals) targetPlan.problems[i].goals = [];
             this.addUndupItems(p["goals"], "text", targetPlan.problems[i].goals);
             // console.log("interventions");
+            // make sure the target has interventions array to add into
+            if (!targetPlan.problems[i].interventions) targetPlan.problems[i].interventions = [];
             this.addUndupItems(p["interventions"], "text", targetPlan.problems[i].interventions);
             break;  // no need to look further
           }

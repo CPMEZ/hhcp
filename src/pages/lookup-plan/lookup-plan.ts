@@ -5,6 +5,7 @@ import { HelpPage } from '../help/help';
 import { PersonalPlansProvider } from '../../providers/personal-plans/personal-plans';
 import { PreviewPage } from '../preview/preview';
 
+const ACT_ID = "assessment";
 
 @IonicPage()
 @Component({
@@ -21,6 +22,7 @@ export class LookupPlanPage {
   itemsList: any;
   fromPage: string;
   searchingMaster: boolean = true;
+  includeACT: boolean = true;
 
   constructor(public navCtrl: NavController,
     private lc: LoadingController,
@@ -36,8 +38,10 @@ export class LookupPlanPage {
     if (this.type === 'condition'
       || this.type === 'discipline') {
       this.searchingMaster = true;
+      this.includeACT = !(this.target.problems && this.target.problems.length > 0)
     } else {
       this.searchingMaster = false;
+      this.includeACT = false;
     }
   }
 
@@ -79,20 +83,44 @@ export class LookupPlanPage {
     // get the selected content, 
     // go to preview/select page
     // console.log('getMaster', which);
+    let selectedPlan;
+    let actPlan;
     this.MPP.getMaster(which["file"])
       .then((data) => {
-        // console.log('getMaster', data );
-        const d = JSON.parse(data);
-        // console.log('getMaster', d );
-        // console.log('d:type', this.type, d[this.type]);
-        // nav to the preview page
-        this.navCtrl.push(PreviewPage, {
-          source: d[this.type],
-          target: this.target,
-          fromPage: this.fromPage,
-          type: this.type
-        });
+        selectedPlan = JSON.parse(data);
+        selectedPlan = selectedPlan[this.type];
+        console.log('getMaster', selectedPlan);
+        if (this.includeACT) {
+          // if requested to include ACT,
+          // get ACT and merge it into the selected master 
+          // before presenting the preview page
+          this.MPP.getMaster(ACT_ID)
+            .then((data) => {
+              actPlan = JSON.parse(data);
+              // console.log('getMaster-ACT_ID1', actPlan );
+              actPlan = actPlan["condition"];  // HARD-CODED TYPE
+              // console.log('getMaster-ACT_ID2', actPlan);
+              this.PPP.mergePlans(selectedPlan, actPlan);
+              // console.log('getMaster-ACT_ID3', selectedPlan);
+              // nav to the preview page
+              this.navCtrl.push(PreviewPage, {
+                source: selectedPlan,
+                target: this.target,
+                fromPage: this.fromPage,
+                type: this.type
+              });
+            });
+        } else {
+          // nav to the preview page
+          this.navCtrl.push(PreviewPage, {
+            source: selectedPlan,
+            target: this.target,
+            fromPage: this.fromPage,
+            type: this.type
+          });
+        }
       })
+
 
   }
 

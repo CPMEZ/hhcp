@@ -13,6 +13,12 @@
 
 <ion-content padding>
   <p class="helpful">{{searchTitle}}</p>
+  <div *ngIf="searchingMaster">
+    <p class="helpful">You can choose to include the standard Assessment & Critical Thinking
+      content with your selected condition- or discipline-based plan.</p>
+    <ion-checkbox [(ngModel)]="includeACT"></ion-checkbox>
+    <label>Include Assessment & Critical Thinking</label>
+  </div>
   <br>
   <ion-toolbar color=primary>
     <ion-searchbar class="search" [(ngModel)]="searchTerm" debounce=1000 placeholder="Search" (ionInput)="getList()">
