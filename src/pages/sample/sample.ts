@@ -38,16 +38,18 @@ export class SamplePage {
     {"text": "Oxygen Care"},
     {"text": "Pain Management"},
     {"text": "Pediatric Care"},
+    {"text": "Rehabilitation"},
     {"text": "Renal Care"},
     {"text": "Respiratory & COPD Care"},
     {"text": "Standard Precautions"},
     {"text": "Surgical Care"},
     {"text": "Urinary Catheter Care"},
     {"text": "Wound Care"},
-    {"text": "Aide"},
-    {"text": "Occupational Therapy"},
+    {"text": "Nursing"},
     {"text": "Physical Therapy"},
     {"text": "Speech-language Pathologist"},
+    {"text": "Occupational Therapy"},
+    {"text": "Aide"},
     {"text": "Medical Social Worker"}
 ]
 
