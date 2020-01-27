@@ -1,9 +1,9 @@
 <ion-content class="no-scroll">
-    <div style="color: red;" (click)="close('condition')">
+    <div *ngIf="auth.userLoggedIn" style="color: red;" (click)="close('condition')">
       <ion-icon name="book"></ion-icon>
       Add a Condition
     </div>
-    <div style="color: red;" (click)="close('discipline')">
+    <div *ngIf="auth.userLoggedIn" style="color: red;" (click)="close('discipline')">
       <ion-icon name="book"></ion-icon>
       Add a Discipline
     </div>
@@ -11,7 +11,7 @@
       <ion-icon name="shuffle"></ion-icon>
       Add from My Plan
     </div>
-    <div style="color: red;" (click)="close('topic')">
+    <div *ngIf="auth.userLoggedIn" style="color: red;" (click)="close('topic')">
       <ion-icon name="add"></ion-icon>
       Add a Care Topic
     </div>

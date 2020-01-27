@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController } from 'ionic-angular';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 @IonicPage()
 @Component({
@@ -8,7 +9,8 @@ import { IonicPage, ViewController } from 'ionic-angular';
 })
 export class PlanMenuPage {
 
-  constructor(public viewCtrl: ViewController) {
+  constructor(public auth: AuthenticationProvider,  
+    public viewCtrl: ViewController) {
   }
 
   close(opt: any) {
