@@ -325,7 +325,7 @@ export class AuthenticationProvider {
             renewal: this.renewal,
             subType: this.subType
         }
-        console.log(state.user);
+        // console.log(state.user);
         const s = this.encrypt(state, STATE_ENCRYPT_KEY);
         this.LSP.set(STORAGE_KEY, s)
             .then(result => console.log("saved session"))
@@ -474,7 +474,7 @@ export class AuthenticationProvider {
 //     console.log('mockcheckStore2');
 //     let storeResult: storeDataType
 //         = { subscription: 'none', state: 'never', date: '', expDate: '' };
-//     try {
+//     try {entries
 //         // let purchases = await this.iap.restorePurchases()
 //         const purchases =
 //             [

@@ -53,24 +53,23 @@ export class WelcomePage {
     this.PPP.loadPlans();
     // cause we don't have async on loadPlans,
     this.events.subscribe('loadComplete', (time) => {
-      // console.log('got event loadComplete');
+      console.log('loading complete');
       try {
         loading.dismiss();
+        // if (this.navCtrl.getActive().name !== CarePlanPage.name) {
         this.navCtrl.setPages([{ page: WelcomePage }, { page: CarePlanPage }]);
       }
-      catch (err) { console.log('load timeout before complete'); }
+      catch (err) { console.log('workOnline', err); }
     })
-    // insurance
+    // insurance if loading is too slow
     setTimeout(() => {
-      // console.log('in timer');
+      console.log('loading timeout');
       try {
+        // won't throw error if already dismissed
         loading.dismiss();
-        this.navCtrl.setPages([{ page: WelcomePage }, { page: CarePlanPage }]);
       }
-      catch (err) {
-        console.log('load complete before timeout');
-      }
-    }, 5000);
+      catch (err) { console.log('workOnline-timeout', err); }
+    }, 10000);
   }
 
   workOffline() {
