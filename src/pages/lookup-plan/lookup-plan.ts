@@ -16,6 +16,7 @@ export class LookupPlanPage {
 
   types: string;
   type: string;
+  searchName: string;
   searchTerm: string;
   searchTitle: string;
   target: any;
@@ -32,9 +33,10 @@ export class LookupPlanPage {
     this.types = this.navParams.get('types');
     this.type = this.navParams.get('type');
     this.searchTerm = this.navParams.get('searchTerm');
+    this.searchName = this.navParams.get('searchName');
     this.fromPage = this.navParams.get('fromPage');
     this.target = this.navParams.get('target');  // plan we're merging into
-    this.searchTitle = "Searching for " + this.navParams.get('searchName') + " to be added to " + this.target["name"];
+    this.searchTitle = "Searching for " + this.searchName + " to be added to " + this.target["name"];
     if (this.type === 'condition'
       || this.type === 'discipline') {
       this.searchingMaster = true;
@@ -51,6 +53,14 @@ export class LookupPlanPage {
     } else {
       this.getPersonalList();
     }
+  }
+
+  getList() {
+    if (this.searchingMaster) {
+      this.getMasterList();
+    } else {
+      this.getPersonalList();
+    } 
   }
 
   getMasterList() {
