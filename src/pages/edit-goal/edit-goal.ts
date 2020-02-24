@@ -12,6 +12,7 @@ import { PersonalPlansProvider } from '../../providers/personal-plans/personal-p
 })
 export class EditGoalPage {
   plan: any;
+  problem: any;
   goal: any;
   saveGoal: { text: "" } = { text: "" };
   // remember to undo the checkbox too
@@ -21,6 +22,7 @@ export class EditGoalPage {
     public auth: AuthenticationProvider,
     public PPP: PersonalPlansProvider) {
     this.plan = navParams.get('plan');
+    this.problem = navParams.get('problem');
     this.goal = navParams.get('goal');
     this.saveGoal.text = this.goal.text;
   }

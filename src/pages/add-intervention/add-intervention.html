@@ -18,7 +18,7 @@
 </ion-header>
 
 <ion-content padding>
-  <p class="helpful">Adding an Intervention to {{plan.name}}
+  <p class="helpful">Adding an Intervention to {{plan.name}}, topic {{problem.name}}
   </p>
   <br>
   <button ion-button icon-left *ngIf="auth.userLoggedIn" (click)="lookupMaster()">

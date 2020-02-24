@@ -46,7 +46,7 @@
                 <ion-col col-1 no-padding>
                 </ion-col>
                 <ion-col col-9 no-padding>
-                  <p [class]="(g.term==='ST')?'goalShort':'goal'" (click)="goalEdit(g)">
+                  <p [class]="(g.term==='ST')?'goalShort':'goal'" (click)="goalEdit(g, p)">
                     <span class="probId" hidden>{{i}}</span>
                     {{g.text}} <em>{{goalTerm(g)}}</em>
                   </p>
@@ -65,7 +65,7 @@
                 <ion-col col-1 no-padding>
                 </ion-col>
                 <ion-col col-9 no-padding>
-                  <p class="intervention" (click)="interventionEdit(n)">
+                  <p class="intervention" (click)="interventionEdit(n,p)">
                     <span class="probId" hidden>{{i}}</span>
                     {{n.text}}
                   </p>

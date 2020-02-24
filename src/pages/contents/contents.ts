@@ -254,9 +254,10 @@ export class ContentsPage {
     });
   }
 
-  goalEdit(goal) {
+  goalEdit(goal, problem) {
     this.navCtrl.push(EditGoalPage, {
       plan: this.plan,
+      problem: problem,
       goal: goal
     });
   }
@@ -282,9 +283,10 @@ export class ContentsPage {
     });
   }
 
-  interventionEdit(intervention) {
+  interventionEdit(intervention, problem) {
     this.navCtrl.push(EditInterventionPage, {
       plan: this.plan,
+      problem: problem,
       intervention: intervention
     });
   }

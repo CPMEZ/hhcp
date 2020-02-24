@@ -13,6 +13,7 @@ import { PersonalPlansProvider } from '../../providers/personal-plans/personal-p
 })
 export class EditInterventionPage {
   plan: any;
+  problem: any;
   intervention: any;
   saveIntervention: { text: "" } = { text: "" };
   // remember to undo the radio button too
@@ -22,6 +23,7 @@ export class EditInterventionPage {
     public auth: AuthenticationProvider,
     public PPP: PersonalPlansProvider) {
     this.plan = navParams.get('plan');
+    this.problem = navParams.get('problem');
     this.intervention = navParams.get('intervention');
     this.saveIntervention.text = this.intervention.text;
   }
