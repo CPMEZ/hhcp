@@ -1,19 +1,23 @@
 page-careplan {
-
-    .plan {
-        color:black;
-        font-size: 20px;
-    }
-     .tool {
-        font-size: 1.4rem;
-        margin-left: 0.4rem;
-        color: grey;
-        background-color: color($colors, light);
-    }
-    .addButton {
-        z-index: 100;
-        position: absolute;
-        // left: 300px;
-        top: 60px;
-    }
+  .plan {
+    color: black;
+    font-size: 20px;
+  }
+  .subtext {
+    margin-left: 1rem;
+    color: grey;
+    font-size: 12px;
+  }
+  .tool {
+    font-size: 1.4rem;
+    margin-left: 0.4rem;
+    color: grey;
+    background-color: color($colors, light);
+  }
+  .addButton {
+    z-index: 100;
+    position: absolute;
+    // left: 300px;
+    top: 60px;
+  }
 }
