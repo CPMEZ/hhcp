@@ -205,7 +205,7 @@ export class AuthenticationProvider {
                 // filter for my types only
                 // const myTypes = ['CP3SubAnnual', 'CP3SubMonthly'];
                 // const myTypes = ['CP3SubMonthly'];
-                const myTypes = ['HHCPSubMonthly', 'hhcpsubmonthly'];
+                const myTypes = ['HHCPSubMonthly', 'hhcpsubmonthly', 'HHCPSubMonthly2', 'hhcpsubmonthly2', 'HHCPSubAnnual', 'hhcpsubannual'];
                 let fp = purchases.filter(x => myTypes.indexOf(x['productId']) !== -1);
                 // add expiration date -- using this to compare equalizes monthly and annual purchases
                 fp.forEach(x => x['expDate'] = this.getExpiration(x['date'], x['productId']));
@@ -255,12 +255,15 @@ export class AuthenticationProvider {
         d = new Date(start);
         switch (subType) {
             case 'HHCPSubAnnual':
+            case 'hhcpsubnnual':
                 exp = new Date(d.valueOf() + year);
                 break;
-            case 'HHCPSubMonthly':
+            case 'HHCPSubMonthly': 
+            case 'HHCPSubMonthly2':
                 exp = new Date(d.valueOf() + (dIM[d.getMonth()] * day));
                 break;
             case 'hhcpsubmonthly':
+            case 'hhcpsubmonthly2':
                 exp = new Date(d.valueOf() + (dIM[d.getMonth()] * day));
                 break;
             default:  // assume monthly

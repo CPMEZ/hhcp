@@ -62,7 +62,7 @@ export class SubselectPage {
     // TODO:  check validateReceipt to see if they've ever
     //      subscribed before, to decide whether to present introductory
     try {
-      this.products = await this.iap.getProducts(['HHCPSubMonthly', 'hhcpsubmonthly']);
+      this.products = await this.iap.getProducts(['HHCPSubMonthly', 'hhcpsubmonthly','HHCPSubMonthly2', 'hhcpsubmonthly2', 'HHCPSubAnnual', 'hhcpsubannual']);
       // alert('PRODUCTS' + JSON.stringify(this.products));
     }
     catch (err) {
