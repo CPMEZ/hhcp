@@ -1,0 +1,13 @@
+page-reviewers {
+  h1 {
+    font-size: 1.8rem;
+    color: color($colors, primary);
+  }
+  p {
+    font-size: 1.4rem;
+    color: black;
+  }
+  .hilite {
+    color: color($colors, primary);
+  }
+}

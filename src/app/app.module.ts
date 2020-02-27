@@ -49,6 +49,7 @@ import { PlanMenuPage } from '../pages/plan-menu/plan-menu';
 import { TopicMenuPage } from '../pages/topic-menu/topic-menu';
 import { SamplePage } from '../pages/sample/sample';
 import { SampleDetailPage } from '../pages/sample-detail/sample-detail';
+import { ReviewersPage } from '../pages/reviewers/reviewers';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { SampleDetailPage } from '../pages/sample-detail/sample-detail';
     PlanMenuPage,
     TopicMenuPage,
     SamplePage,
-    SampleDetailPage
+    SampleDetailPage,
+    ReviewersPage,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +117,8 @@ import { SampleDetailPage } from '../pages/sample-detail/sample-detail';
     PlanMenuPage,
     TopicMenuPage,
     SamplePage,
-    SampleDetailPage
+    SampleDetailPage,
+    ReviewersPage,
   ],
   providers: [
     AuthenticationProvider,

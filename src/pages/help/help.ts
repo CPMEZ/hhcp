@@ -4,6 +4,7 @@ import { Printer, PrintOptions } from '@ionic-native/printer';
 import { TermsPage } from '../terms/terms';
 import { SubselectPage } from '../subselect/subselect';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { ReviewersPage } from '../reviewers/reviewers';
 
 @IonicPage()
 @Component({
@@ -39,6 +40,9 @@ print() {
   
   terms() {
     this.navCtrl.push(TermsPage);
+  }
+  reviewers() {
+    this.navCtrl.push(ReviewersPage);
   }
 
   subscribe() {
