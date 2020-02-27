@@ -44,12 +44,12 @@ export class SampleDetailPage {
             {
               "text": "Caregiver/Family will log/note patient's daily, consistent routine",
               "hint": "e.g. meal time, naps, medication schedule, hygiene",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             },
             {
               "text": "Teach patient/caregiver/family's about disease process and management",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             }
           ]
         },
@@ -66,27 +66,27 @@ export class SampleDetailPage {
             {
               "text": "Assess/Implement and monitor bowel regimen, and teach program to family/caregiver",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             },
             {
               "text": "Assessment/Observation/Evaluation of bladder elimination habits and management of incontinence, and assess need for indwelling catheter",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             },
             {
               "text": "Assess amount and frequency of urinary output",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             },
             {
               "text": "Encourage hand held foods to encourage self feeding",
               "hint": "e.g. sandwiches, cookies, milk shakes, comfort foods of patients choice per swallowing ability",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             },
             {
               "text": "Diet counseling for patient with anorexia",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             }
           ]
         },
@@ -107,12 +107,12 @@ export class SampleDetailPage {
             {
               "text": "Teach caregiver/family regarding importance of observation of patient's safety",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             },
             {
               "text": "Teach caregiver/family regarding safety of patient in home",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             }
           ]
         },
@@ -133,7 +133,7 @@ export class SampleDetailPage {
             {
               "text": "Assist caregiver/family in setting up patient centered routine and stress the importance of adhering to the routine once established",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             }
           ]
         },
@@ -144,7 +144,7 @@ export class SampleDetailPage {
             {
               "text": "Impaired mental status and needs supervision 24 hours a day",
               "hint": "",
-              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietician": false, "RT": false, "other": ""
+              "nursing": true, "OT": false, "PT": false, "speech": false, "social": false, "aide": false, "pharmacist": false, "dietitian": false, "RT": false, "other": ""
             }
           ]
         }
