@@ -338,7 +338,7 @@ export class ContentsPage {
     if (int.nursing) { discText += "Nursing " }
     if (int.aide) { discText += "Aide " }
     if (int.bereavement) { discText += "Bereavement " }
-    if (int.dietary) { discText += "Dietary " }
+    if (int.dietitian) { discText += "Dietitian " }
     if (int.music) { discText += "Music/Other " }
     if (int.OT) { discText += "OT " }
     if (int.PT) { discText += "PT " }

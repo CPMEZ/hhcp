@@ -46,7 +46,7 @@ export class AddInterventionPage {
     this.intervention["nursing"] = false;
     this.intervention["aide"] = false;
     this.intervention["bereavement"] = false;
-    this.intervention["dietary"] = false;
+    this.intervention["dietitian"] = false;
     this.intervention["music"] = false;
     this.intervention["OT"] = false;
     this.intervention["PT"] = false;
