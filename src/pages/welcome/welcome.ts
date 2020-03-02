@@ -9,6 +9,7 @@ import { PersonalPlansProvider } from '../../providers/personal-plans/personal-p
 import { SamplePage } from '../sample/sample';
 import { SubselectPage } from '../subselect/subselect';
 import { HelpPage } from '../help/help';
+import { ReviewersPage } from '../reviewers/reviewers';
 // import { InAppBrowserOriginal } from '@ionic-native/in-app-browser';
 
 @IonicPage()
@@ -116,5 +117,7 @@ export class WelcomePage {
   showTerms() {
     this.navCtrl.push(TermsPage);
   }
-
+  reviewers() {
+    this.navCtrl.push(ReviewersPage);
+  }
 }
