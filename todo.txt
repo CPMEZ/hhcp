@@ -1,3 +1,17 @@
+  drop new care plans at top of list, not bottom
+x  show plan description below the title in my care plans
+	vitina's edits
+	georgia's electrolytes edit
+	mary's help text
+
+x set subscription prices
+
+x put reviewers list off the help page
+
+category/topic-based search for intervention/goals
+sort the my plans page by date, alphabetically
+
+
 x replace sample care plan for HH
 
 _ add a way to message customers, and have them reply
@@ -152,7 +166,7 @@ x add popup menus
 x guided starter plan
 
 
-v 0.0.9 for distribution
+v 1.0.0 for distribution
 
 
 x renew subscription
