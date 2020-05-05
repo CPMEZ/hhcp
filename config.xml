@@ -105,4 +105,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreenDelay" value="3000" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.1.4" />
+
 </widget>
