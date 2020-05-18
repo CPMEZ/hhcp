@@ -5,6 +5,7 @@ import { TermsPage } from '../terms/terms';
 import { SubselectPage } from '../subselect/subselect';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { ReviewersPage } from '../reviewers/reviewers';
+import { VideoPage } from '../video/video';
 
 @IonicPage()
 @Component({
@@ -43,6 +44,9 @@ print() {
   }
   reviewers() {
     this.navCtrl.push(ReviewersPage);
+  }
+  video() {
+    this.navCtrl.push(VideoPage);
   }
 
   subscribe() {

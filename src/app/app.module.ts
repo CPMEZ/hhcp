@@ -50,6 +50,7 @@ import { TopicMenuPage } from '../pages/topic-menu/topic-menu';
 import { SamplePage } from '../pages/sample/sample';
 import { SampleDetailPage } from '../pages/sample-detail/sample-detail';
 import { ReviewersPage } from '../pages/reviewers/reviewers';
+import { VideoPage } from '../pages/video/video';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { ReviewersPage } from '../pages/reviewers/reviewers';
     SamplePage,
     SampleDetailPage,
     ReviewersPage,
+    VideoPage,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +121,7 @@ import { ReviewersPage } from '../pages/reviewers/reviewers';
     SamplePage,
     SampleDetailPage,
     ReviewersPage,
+    VideoPage,
   ],
   providers: [
     AuthenticationProvider,

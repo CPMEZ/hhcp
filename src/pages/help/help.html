@@ -12,8 +12,9 @@
 <ion-content padding>
   <p class='aside'>If you're in a hurry, you can scroll down to <span class='hilite'>Getting Started</span> and the
     <span class='hilite'>Quick Guide</span> first. Or watch 
-    <a href="#"
-      onclick="window.open('https://youtu.be/MHIMzpycq8s/', '_blank', 'location=no'); return false;">this video.</a>
+    <span class='hilite' (click)='video()' >this video.</span>
+    <!-- <a href="#"
+      onclick="window.open('https://youtu.be/MHIMzpycq8s/', '_blank', 'location=no'); return false;">this video.</a> -->
   </p>
   <p>See our Reviewers <span class='hilite' (click)='reviewers()'>here</span></p>
   <h1>A Word about Care Planning</h1>
