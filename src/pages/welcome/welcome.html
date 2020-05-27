@@ -34,11 +34,11 @@
     </button>
     <h2 class="underline" (click)="subscribe()">Not a subscriber? Subscribe now</h2>
     <h2><em>Before Getting Started,</em></h2>
-    <h2><span class="underline" (click)="gotoHelp()">Read This</span>, or</h2>
-    <h2>
-      <a style="color: white;" href="#"
+    <h2><span class="underline" (click)="gotoHelp()">Read This</span>, or
+      <span class='underline' (click)='video()'>Watch a How-To video.</span>
+      <!-- <a style="color: white;" href="#"
       onclick="window.open('https://youtu.be/MHIMzpycq8s/', '_blank', 'location=no'); return false;">Watch a
-      HOW-TO Video</a>
+      HOW-TO Video</a> -->
     </h2>
     <br>
     <h2 class="underline" (click)="previewStd()">Preview Red Book Standard Plans</h2>
@@ -48,5 +48,5 @@
     <h4 (click)="showTerms()">Using the app indicates you accept the <span class="underline">License Agreement.</span>
     </h4>
   </div>
-  <p style="color: white; font-size: xx-small; text-align: center">v1.0.6.0</p>
+  <p style="color: white; font-size: xx-small; text-align: center">v1.0.7.0</p>
 </ion-content>

@@ -10,6 +10,7 @@ import { SamplePage } from '../sample/sample';
 import { SubselectPage } from '../subselect/subselect';
 import { HelpPage } from '../help/help';
 import { ReviewersPage } from '../reviewers/reviewers';
+import { VideoPage } from '../video/video';
 // import { InAppBrowserOriginal } from '@ionic-native/in-app-browser';
 
 @IonicPage()
@@ -119,5 +120,8 @@ export class WelcomePage {
   }
   reviewers() {
     this.navCtrl.push(ReviewersPage);
+  }
+  video() {
+    this.navCtrl.push(VideoPage);
   }
 }
